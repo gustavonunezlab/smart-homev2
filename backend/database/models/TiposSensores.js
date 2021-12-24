@@ -17,6 +17,7 @@ TiposSensores.init(
   {
     sequelize,
     modelName: "tipos_sensores",
+    timestamps: false
   }
 );
 

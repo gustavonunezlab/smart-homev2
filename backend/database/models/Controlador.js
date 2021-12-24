@@ -17,6 +17,7 @@ Controlador.init(
   {
     sequelize,
     modelName: "controlador",
+    timestamps: false
   }
 );
 
