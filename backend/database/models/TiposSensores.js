@@ -16,3 +16,9 @@ TiposSensores.init(
 );
 
 module.exports = TiposSensores;
+
+/*
+
+Relacion con Sensor one to many a traves de id_sensor
+
+*/
