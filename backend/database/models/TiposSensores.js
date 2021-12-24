@@ -7,6 +7,11 @@ TiposSensores.init(
     tipo_sensor: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Introduzca un nombre para el tipo sensor.'
+        }
+      }
     },
   },
   {

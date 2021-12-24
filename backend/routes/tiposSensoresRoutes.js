@@ -20,6 +20,8 @@ router.post('/', (req, res) => {
         
     }).then(post => {
         res.json(post);
+    }).catch(err => {
+        res.json(err);
     });
 });
 
@@ -32,6 +34,8 @@ router.put('/:id', (req, res) => {
         }
     }).then(result => {
         res.json(result);
+    }).catch(err => {
+        res.json(err);
     });
 });
 
@@ -42,6 +46,8 @@ router.delete('/:id', (req, res) => {
         }
     }).then(result => {
         res.json(result);
+    }).catch(err => {
+        res.json(err);
     });
 });
 

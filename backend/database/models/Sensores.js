@@ -7,10 +7,30 @@ Sensores.init(
     codigo: {
       type: DataTypes.STRING(10),
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Introduzca un código para el sensor.'
+        }
+      }
     },
     sensor: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Introduzca un nombre para el sensor.'
+        }
+      }
+    },
+    ip: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      validate: {
+        isIP: {
+          args: true,
+          msg: "Verifique el formato de ip (IPv4 o IPv6).",
+        },
+      }
     },
     estado: {
       type: DataTypes.STRING(50),

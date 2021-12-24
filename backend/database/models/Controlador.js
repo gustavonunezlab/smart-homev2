@@ -7,6 +7,11 @@ Controlador.init(
     controlador: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Introduzca un nombre para el controlador.'
+        }
+      }
     },
   },
   {

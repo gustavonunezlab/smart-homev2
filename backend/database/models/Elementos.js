@@ -5,11 +5,21 @@ class Elementos extends Model { }
     Elementos.init({
         elemento: {
             type: DataTypes.STRING(50),
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notNull: {
+                  msg: 'Introduzca un nombre para el elemento.'
+                }
+              }
         },
         codigo: {
             type: DataTypes.STRING(10),
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notNull: {
+                  msg: 'Introduzca un código para el elemento.'
+                }
+              }
         },
         estado: {
             type: DataTypes.STRING(50),
