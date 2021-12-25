@@ -22,12 +22,15 @@ router.get("/:id", (req, res) => {
       {
         model: Sensores,
         attributes: ["id", "sensor", "codigo", "ip", "estado"],
-        include: [{
-          model: TiposSensores,
-        }, {
-            model:Elementos,
+        include: [
+          {
+            model: TiposSensores,
+          },
+          {
+            model: Elementos,
             attributes: ["id", "elemento", "codigo", "estado"],
-        }],
+          },
+        ],
       },
       {
         model: Elementos,

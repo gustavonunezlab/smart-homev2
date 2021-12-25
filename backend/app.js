@@ -15,17 +15,17 @@ app.use(routes);
 app.listen(PORT, () => {
   console.log(`La aplicación está ejecutándose en http://localhost:${PORT}`);
 
-
   sequelize
     .sync({ force: false })
     .then(() => {
       console.log("Conexión a la BD establecida");
 
       /* Creación automática del Controlador */
-      Controlador.create({
-        controlador: "SmartHome Vivienda Inteligente"
+      Controlador.findOrCreate({
+        where: { 
+          id: 1,
+          controlador: "SmartHome Vivienda Inteligente" },
       });
-
     })
     .catch((error) => {
       console.log("Se ha producido un error", error);
