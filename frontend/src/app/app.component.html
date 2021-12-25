@@ -1,3 +1,12 @@
-<router-outlet></router-outlet>
+<div class="menu-principal">
+  <h1 class="font-weight-bold" routerLink="/">SmartHome</h1>
 
-<button class="btn btn-danger">asdasdasd</button>
+  <nav class="navegacion-principal">
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/sensores">Sensores</a>
+    <a routerLink="/elementos">Elementos</a>
+  </nav>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

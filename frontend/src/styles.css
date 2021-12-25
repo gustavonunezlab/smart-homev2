@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --blanco: #ffffff;
+    --oscuro: #000000;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+  }
+  
+  html {
+    font-size: 62.5%;
+    min-height: 100%;
+    position: relative;
+    box-sizing: border-box; /* Hack para el box model */
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-size: 16px; /* 1rem = 10px */
+    font-family: "Trirong", serif;
+    background-image: linear-gradient(
+      to top,
+      var(--grisClaro) 0%,
+      var(--blanco) 100%
+    );
+  }
+  
+  

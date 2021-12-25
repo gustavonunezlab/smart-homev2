@@ -2,9 +2,14 @@ const express = require("express");
 const app = express();
 const sequelize = require("./database/db");
 const routes = require("./routes");
+const cors = require('cors');
 const Controlador = require("./database/models/Controlador");
 
 require("./database/association");
+
+app.use(cors({
+  origin: '*'
+}));
 
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
