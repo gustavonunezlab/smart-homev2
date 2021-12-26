@@ -16,6 +16,7 @@ Elementos.init(
     codigo: {
       type: DataTypes.STRING(10),
       allowNull: false,
+      unique: true,
       validate: {
         notNull: {
           msg: "Introduzca un código para el elemento.",

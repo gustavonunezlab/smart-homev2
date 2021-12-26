@@ -6,6 +6,7 @@ TiposSensores.init(
   {
     tipo_sensor: {
       type: DataTypes.STRING(50),
+      unique: true,
       allowNull: false,
       validate: {
         notNull: {

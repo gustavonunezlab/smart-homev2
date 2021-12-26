@@ -1,0 +1,9 @@
+Interfaz sensor-details ver crear un sensor nuevo (faltan campos en el master detail)
+Tamaño formulario raro
+
+Ver typeaheadas para traer los tipos_sensores existentes. 
+Ejemplo en (https://git.fi.mdn.unp.edu.ar/gustavonunez/delivery/-/blob/master/src/client/app/src/app/localidades-detail/localidades-detail.component.html)
+
+
+
+Metodos delete

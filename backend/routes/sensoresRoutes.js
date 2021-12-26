@@ -38,6 +38,26 @@ router.get("/:id", (req, res) => {
   });
 });
 
+router.get("/codigo/:codigo", (req, res) => {
+  Sensores.findOne({
+    where: {
+      codigo: req.params.codigo,
+    },
+    include: [
+      {
+        model: Elementos,
+        attributes: ["id", "elemento", "codigo", "estado"],
+      },
+      {
+        model: TiposSensores,
+      },
+    ],
+    attributes: ["id", "sensor", "codigo", "estado"],
+  }).then((sensor) => {
+    res.json(sensor);
+  });
+});
+
 router.post("/", (req, res) => {
   Sensores.create({
     codigo: req.body.codigo,

@@ -12,10 +12,6 @@ import { SensorService } from '../services/sensor.service';
 })
 export class SensoresComponent implements OnInit {
   sensores: Sensor[] = [];
-  
-  resultsPage: ResultsPage = <ResultsPage>{};
-  pages: number[] = [];
-  currentPage: number = 1;
 
   constructor(private sensorService: SensorService) {}
 
@@ -24,17 +20,10 @@ export class SensoresComponent implements OnInit {
   }
 
   getSensores(): void {
-    this.sensorService.getSensores().subscribe((sensor) => {
-      console.log(sensor);
-
-      this.sensores = sensor.slice();
-
-      console.log(this.sensores);
-      
-
-
+    this.sensorService.getSensores().subscribe((response: any) => {
+      response.forEach((element: Sensor) => {
+        this.sensores.push(element);
+      });
     });
-
-    //ver aca esta mierda
   }
 }

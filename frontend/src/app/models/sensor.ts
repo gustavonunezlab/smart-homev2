@@ -1,4 +1,5 @@
 import { TipoSensor } from "./tipoSensor";
+import { Elemento } from "./elemento";
 
 export interface Sensor {
   id: number;
@@ -7,9 +8,9 @@ export interface Sensor {
 
   ip: number;
 
-  tipoSensor: TipoSensor;
+  tipos_sensore: TipoSensor;
 
-  idTipoSensor: number;
+  elemento: Elemento;
 
   estado: boolean;
 

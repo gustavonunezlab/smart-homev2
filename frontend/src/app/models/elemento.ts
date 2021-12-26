@@ -3,7 +3,7 @@ import { Sensor } from './sensor';
 export interface Elemento {
   id: number;
 
-  nombre: string;
+  elemento: string;
 
   tipo: string;
 

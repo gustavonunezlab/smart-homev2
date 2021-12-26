@@ -1,5 +1,4 @@
 export interface DataPackage {
-    slice(): import("./sensor").Sensor[];
 
     statusCode: number;
     
