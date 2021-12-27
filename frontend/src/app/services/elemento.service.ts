@@ -33,7 +33,7 @@ export class ElementoService {
     return this.http.get<DataPackage>(`${this.elementossUrl}/search/${text}`);
   }
 
- /* El tema es con un satapackage. Cambiar any por DataPackage para retomar*/
+ /* El tema es con un datapackage. Cambiar any por DataPackage para retomar*/
   search(searchText: string): Observable<any> {
     console.log(this.http.get<DataPackage>(`${this.elementossUrl}/search/${searchText}`));
     
