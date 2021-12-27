@@ -12,7 +12,7 @@ export interface Sensor {
 
   elemento: Elemento;
 
-  estado: boolean;
+  estado: string;
 
   codigo: string;
 

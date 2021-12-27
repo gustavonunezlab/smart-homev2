@@ -1,33 +1,143 @@
 <div *ngIf="sensor">
-    <h2>Detalles sensor</h2>
-    <form #form="ngForm">
-        <div class="form-group">
-            <label for="name">Código:</label>
-            <input [(ngModel)]="sensor.codigo" name="codigo" placeholder="Código" class="form-control" minlength="1"
-                maxlength="10" title="Letras y/o números. Tamaño mínimo: 1. Tamaño máximo: 10" required />
+  <h2>Detalles sensor</h2>
+  <form #form="ngForm">
+    <div class="form-row" style="display: flex">
+      <div class="form-group col">
+        <label for="name">Código:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="sensor.codigo"
+            name="codigo"
+            placeholder="Código"
+            class="form-control"
+            minlength="1"
+            maxlength="10"
+            title="Letras y/o números. Tamaño mínimo: 1. Tamaño máximo: 10"
+            required
+          />
         </div>
-        <div class="form-group">
-            <label for="name">Nombre:</label>
-            <input [(ngModel)]="sensor.sensor" name="sensor" placeholder="Nombre" class="form-control" minlength="3"
-                 maxlength="40" required />
+      </div>
+      &nbsp;
+      <div class="form-group col">
+        <label for="name">Nombre:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="sensor.sensor"
+            name="sensor"
+            placeholder="Nombre"
+            class="form-control"
+            minlength="3"
+            maxlength="40"
+            required
+          />
         </div>
-        <div class="form-group">
-            <label for="name">Tipo Sensor:</label>
-            <input [(ngModel)]="sensor.tipos_sensore.tipo_sensor" name="tipo_sensor" placeholder="Tipo Sensor" class="form-control" required />
-        </div>
-        <div class="form-group">
-            <label for="name">Estado:</label>
-            <input [(ngModel)]="sensor.estado" name="estado" placeholder="Estado" class="form-control" minlength="3"
-                 maxlength="40" />
-        </div>
-        <br>
-            
-        <button (click)="goBack()" class="btn" style="border-color: black;"
-                style="background-color: grey;">Atrás</button>
-            &nbsp;
-        <button (click)="save()" [disabled]="!form.valid" class="btn" style="border-color: black;" style="
-                background-color: lightsteelblue;">Guardar</button>
-    </form>
-</div>
-    
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="name">Elemento asociado:</label>
+      <div class="input-group">
+        <input
+          [(ngModel)]="sensor.elemento"
+          name="elemento"
+          placeholder="Elemento"
+          class="form-control"
+          minlength="4"
+          maxlength="20"
+          required
+          [ngbTypeahead]="searchElemento"
+          [resultFormatter]="resultFormat"
+          [inputFormatter]="inputFormat"
+          [editable]="false"
+        />
+      </div>
+    </div>
+
+    <div class="form-row" style="display: flex">
+      <!--
+      <div class="form-group col">
+        <label for="name">Tipo Sensor:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="sensor.tipos_sensore.tipo_sensor"
+            name="tipo_sensor"
+            placeholder="Tipo Sensor"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      &nbsp; -->
+      <div class="form-group col">
+        <label for="name">Estado:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="sensor.estado"
+            name="estado"
+            placeholder="Estado"
+            class="form-control"
+            minlength="3"
+            maxlength="40"
+          />
+        </div>
+      </div>
+      &nbsp;
+      <div class="form-group col">
+        <label for="name">Temperatura:</label>
+
+        <div
+          *ngIf="
+            sensor.tipos_sensore === null ||
+              sensor.tipos_sensore.tipo_sensor === 'TEMPERATURA';
+            then content;
+            else other_content
+          "
+        ></div>
+
+        <ng-template #content>
+          <div class="input-group">
+            <input
+              [(ngModel)]="sensor.temperatura"
+              name="temperatura"
+              placeholder="Temperatura"
+              class="form-control"
+              minlength="3"
+              maxlength="40"
+            />
+          </div>
+        </ng-template>
+
+        <ng-template #other_content>
+          <div class="input-group">
+            <input
+              type="text"
+              value="No aplicable a Tipo de sensor de Apertura"
+              class="form-control"
+              readonly
+            />
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <br />
+
+    <button
+      (click)="goBack()"
+      class="btn"
+      style="border-color: black"
+      style="background-color: grey"
+    >
+      Atrás
+    </button>
+    &nbsp;
+    <button
+      (click)="save()"
+      [disabled]="!form.valid"
+      class="btn"
+      style="border-color: black"
+      style="background-color: lightsteelblue"
+    >
+      Guardar
+    </button>
+  </form>
+</div>

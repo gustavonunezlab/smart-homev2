@@ -4,6 +4,8 @@ const Sensores = require("../database/models/Sensores");
 const Elementos = require("../database/models/Elementos");
 const TiposSensores = require("../database/models/TiposSensores");
 
+var Sequelize = require("sequelize");
+
 router.get("/", (req, res) => {
   Sensores.findAll({
     include: [
@@ -55,6 +57,17 @@ router.get("/codigo/:codigo", (req, res) => {
     attributes: ["id", "sensor", "codigo", "estado"],
   }).then((sensor) => {
     res.json(sensor);
+  });
+});
+
+router.get("/search/:text", (req, res) => {
+  const text = req.params.text;
+  Sensores.findAll({
+    where: {
+      sensor: { [Sequelize.Op.like]: "%" + text.toLowerCase() + "%" },
+    },
+  }).then((sensores) => {
+    res.json(sensores);
   });
 });
 

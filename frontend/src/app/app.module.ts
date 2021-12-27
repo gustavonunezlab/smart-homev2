@@ -9,7 +9,8 @@ import { ElementosComponent } from './elementos/elementos.component';
 import { SensoresComponent } from './sensores/sensores.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { ElementoDetailsComponent } from './elemento-details/elemento-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     ElementosComponent,
     SensoresComponent,
-    SensorDetailsComponent
+    SensorDetailsComponent,
+    ElementoDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    NgbTypeaheadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

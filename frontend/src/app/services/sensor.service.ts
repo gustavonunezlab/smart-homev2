@@ -18,14 +18,9 @@ export class SensorService {
     return this.http.get<DataPackage>(`${this.sensoresUrl}`);
   }
 
- /* get(codigo: string) {
-    return this.http.get<Sensor>(`${this.sensoresUrl}/codigo/${codigo}`);
-  } */
-
   get(codigo: string): Observable<DataPackage> {
     return this.http.get<DataPackage>(`${this.sensoresUrl}/codigo/${codigo}`);
-}
-
+  }
 
   save(sensor: Sensor): Observable<DataPackage> {
     return this.http[sensor.id ? 'put' : 'post']<DataPackage>(

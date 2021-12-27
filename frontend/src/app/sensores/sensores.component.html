@@ -4,13 +4,15 @@
   </div>
 
   <div class="col">
-    <span class="float-right"><a
-      routerLink="/sensores/new"
-      type="button"
-      class="btn btn-dark pull-right"
-      id="boton-add"
-      >Agregar Sensor</a
-    ></span>
+    <span class="float-right"
+      ><a
+        routerLink="/sensores/new"
+        type="button"
+        class="btn btn-dark pull-right"
+        id="boton-add"
+        >Agregar Sensor</a
+      ></span
+    >
   </div>
 </div>
 
@@ -55,10 +57,14 @@
         <ng-template #other_content><td>-</td></ng-template>
 
         <td>
-          <a routerLink="/sensores/{{sensor.codigo}}"><i class="fa fa-remove"></i></a>
+          <a routerLink="/sensores/{{ sensor.codigo }}"
+            ><i class="fa fa-remove"></i
+          ></a>
         </td>
         <td>
-          <a routerLink="/sensores/{{sensor.codigo}}"><i class="fa fa-pencil"></i></a>
+          <a routerLink="/sensores/{{ sensor.codigo }}"
+            ><i class="fa fa-pencil"></i
+          ></a>
         </td>
       </tr>
     </tbody>

@@ -2,13 +2,11 @@
     background-color: var(--oscuro);
     align-items: center;
     text-align: center;
-    padding-top: 3rem;
     margin-bottom: 2rem;
   }
   
   .navegacion-principal {
     position: relative;
-    padding: 3rem;
   }
   
   h1 {
@@ -19,7 +17,7 @@
   @media (min-width: 768px) {
     .menu-principal {
       display: flex;
-      padding: 3rem;
+      padding: 2rem;
     }
   
     .navegacion-principal {
@@ -42,4 +40,3 @@
     background-color: var(--primario);
     color: var(--oscuro);
   }
-  

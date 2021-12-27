@@ -12,10 +12,9 @@
 }
 
 html {
-  font-size: 62.5%;
+
   min-height: 100%;
   position: relative;
-  box-sizing: border-box; /* Hack para el box model */
 }
 
 *,
@@ -25,7 +24,7 @@ html {
 }
 
 body {
-  font-size: 16px; /* 1rem = 10px */
+ 
   font-family: "Trirong", serif;
   background-image: linear-gradient(
     to top,
@@ -35,12 +34,16 @@ body {
 }
 
 #boton-add {
-  font-size: 100%;
+
   color: var(--primario);
 }
 
 #boton-add:hover {
-  font-size: 100%;
+
   color: var(--oscuro);
   background-color: var(--primario);
+}
+
+.input-group input {
+  margin-bottom: 2rem;
 }
