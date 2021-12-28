@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataPackage } from '../models/data-package';
-import { ResultsPage } from '../models/results-page';
-
 import { Sensor } from '../models/sensor';
 import { SensorService } from '../services/sensor.service';
 

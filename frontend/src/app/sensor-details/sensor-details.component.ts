@@ -70,28 +70,25 @@ export class SensorDetailsComponent implements OnInit {
     });
   }
 
-  searchElemento = (text$: Observable<string>) =>
+  searchElemento: OperatorFunction<string, readonly string[]> = (
+    text$: Observable<string>
+  ) =>
     text$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       tap(() => (this.searching = true)),
       switchMap((term) =>
-        this.elementoService
-          .search(term)
-          .pipe(map((response) => response.data))
-          .pipe(
-            tap(() => (this.searchFailed = false)),
-            catchError(() => {
-              this.searchFailed = true;
-              return of([]);
-            })
-          )
+        this.elementoService.search(term).pipe(
+          tap(() => (this.searchFailed = false)),
+          catchError(() => {
+            this.searchFailed = true;
+            return of([]);
+          })
+        )
       ),
-      tap(() => (this.searching = false)),
-     
+      tap(() => (this.searching = false))
     );
 
-    
   resultFormat(value: any): string {
     return value.elemento;
   }

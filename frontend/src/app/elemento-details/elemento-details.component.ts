@@ -30,7 +30,6 @@ export class ElementoDetailsComponent implements OnInit {
     } else {
       this.elementoService.get(codigo!).subscribe((response: any) => {
         this.elemento = <Elemento>response;
-        console.log(this.elemento);
       });
     }
   }
@@ -38,6 +37,7 @@ export class ElementoDetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
   save(): void {
     this.elementoService.save(this.elemento).subscribe((dataPackage) => {
       this.elemento = <Elemento>dataPackage.data;

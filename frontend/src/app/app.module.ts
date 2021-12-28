@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
 import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ElementoDetailsComponent } from './elemento-details/elemento-details.component';
+import { TiposSensoresComponent } from './tipos-sensores/tipos-sensores.component';
+import { TipoSensorDetailsComponent } from './tipo-sensor-details/tipo-sensor-details.component';
+import { NgbdModalConfirm } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ElementoDetailsComponent } from './elemento-details/elemento-details.co
     ElementosComponent,
     SensoresComponent,
     SensorDetailsComponent,
-    ElementoDetailsComponent
+    ElementoDetailsComponent,
+    TiposSensoresComponent,
+    TipoSensorDetailsComponent,
+    NgbdModalConfirm,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,9 @@ import { ElementoDetailsComponent } from './elemento-details/elemento-details.co
     FormsModule,
     NgbModule,
     NgbTypeaheadModule,
+  ],
+  entryComponents: [
+    NgbdModalConfirm
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,17 +2,19 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
+/* Generales */
 :root {
   --blanco: #ffffff;
   --oscuro: #000000;
   --primario: #ffc107;
+  --primario-oscuro: #d19e03;
   --secundario: #0097a7;
   --gris: #a09e9e;
   --grisClaro: #dfe9f3;
+  --danger: #dc3545;
 }
 
 html {
-
   min-height: 100%;
   position: relative;
 }
@@ -24,7 +26,6 @@ html {
 }
 
 body {
- 
   font-family: "Trirong", serif;
   background-image: linear-gradient(
     to top,
@@ -33,17 +34,43 @@ body {
   );
 }
 
-#boton-add {
+h2 {
+  text-transform: uppercase;
+}
 
+/* Estilo de botones */
+#boton-add, #boton-back, #boton-save:hover, #boton-ok {
+  background-color: var(--oscuro);
   color: var(--primario);
 }
 
-#boton-add:hover {
-
+#boton-add:hover, #boton-back:hover, #boton-save, #boton-ok:hover {
   color: var(--oscuro);
   background-color: var(--primario);
+  border-color: var(--oscuro);
 }
 
+/* Typeahead dropdown */
+button[class~="dropdown-item"] {
+  width: auto;
+}
+
+/* Correcion de tamaño inputs */
 .input-group input {
   margin-bottom: 2rem;
+}
+
+/* Color Iconos eliminar, editar*/
+i[class~="fa"] {
+  color: var(--oscuro);
+}
+
+i[class~="fa"]:hover {
+  color: var(--primario-oscuro);
+}
+
+/* Modal Styles*/
+.modal-header {
+  background-color: var(--primario);
+  color: var(--oscuro);
 }

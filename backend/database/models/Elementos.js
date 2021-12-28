@@ -4,6 +4,11 @@ const sequelize = require("../db");
 class Elementos extends Model {}
 Elementos.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     elemento: {
       type: DataTypes.STRING(50),
       allowNull: false,

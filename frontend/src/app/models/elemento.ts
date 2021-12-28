@@ -5,11 +5,9 @@ export interface Elemento {
 
   elemento: string;
 
-  tipo: string;
-
   sensore: Sensor;
 
-  estado: boolean;
+  estado: string;
 
   codigo: string;
 }

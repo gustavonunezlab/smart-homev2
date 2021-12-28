@@ -4,6 +4,11 @@ const sequelize = require("../db");
 class Sensores extends Model {}
 Sensores.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     sensor: {
       type: DataTypes.STRING(50),
       allowNull: false,

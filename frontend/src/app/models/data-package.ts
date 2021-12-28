@@ -1,10 +1,11 @@
 export interface DataPackage {
+  StatusCode: number;
 
-    statusCode: number;
-    
-    status: string;
+  StatusText: string;
 
-    message: string;
+  status: string;
 
-    data: object;
+  message: string;
+
+  data: object;
 }

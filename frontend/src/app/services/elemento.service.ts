@@ -12,35 +12,35 @@ import { HttpClient } from '@angular/common/http';
 export class ElementoService {
   constructor(private http: HttpClient) {}
 
-  private elementossUrl = `${environment.baseUrl}/elementos`; //'http://localhost:3000/elementos';  // URL to web api
+  private elementosUrl = `${environment.baseUrl}/elementos`; //'http://localhost:3000/elementos';  // URL to web api
 
   getElementos(): Observable<DataPackage> {
-    return this.http.get<DataPackage>(`${this.elementossUrl}`);
+    return this.http.get<DataPackage>(`${this.elementosUrl}`);
   }
 
   get(codigo: string): Observable<DataPackage> {
-    return this.http.get<DataPackage>(`${this.elementossUrl}/codigo/${codigo}`);
+    return this.http.get<DataPackage>(`${this.elementosUrl}/codigo/${codigo}`);
   }
 
   save(elemento: Elemento): Observable<DataPackage> {
-    return this.http[elemento.id ? 'put' : 'post']<DataPackage>(
-      `${this.elementossUrl}/${elemento.id}`,
-      elemento
-    );
+    if (elemento.id != undefined) {
+      return this.http.put<DataPackage>(
+        `${this.elementosUrl}/${elemento.id}`,
+        elemento
+      );
+    } else {
+      return this.http.post<DataPackage>(`${this.elementosUrl}`, elemento);
+    }
   }
 
-  search2(text: string): Observable<DataPackage> {
-    return this.http.get<DataPackage>(`${this.elementossUrl}/search/${text}`);
-  }
-
- /* El tema es con un datapackage. Cambiar any por DataPackage para retomar*/
   search(searchText: string): Observable<any> {
-    console.log(this.http.get<DataPackage>(`${this.elementossUrl}/search/${searchText}`));
-    
-    
-    return this.http.get<DataPackage>(`${this.elementossUrl}/search/${searchText}`).pipe(
-       map((res: any) => res),
-       catchError(error => throwError(error))
+    return this.http.get<DataPackage>(
+      `${this.elementosUrl}/search/${searchText}`
     );
   }
+
+  remove(id: number): Observable<DataPackage> {
+    return this.http['delete']<DataPackage>(`${this.elementosUrl}/${id}`);
+}
+
 }

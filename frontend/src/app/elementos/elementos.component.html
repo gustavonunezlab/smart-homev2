@@ -41,27 +41,36 @@
         <td>{{ elemento.codigo }}</td>
         <td>{{ elemento.elemento }}</td>
 
-        <td>{{ elemento.sensore.sensor }}</td>
-        <td>{{ elemento.sensore.tipos_sensore.tipo_sensor }}</td>
-
-        <div
-          *ngIf="
-            elemento.sensore.tipos_sensore.tipo_sensor === 'TEMPERATURA';
-            then content;
-            else other_content
-          "
-        >
+        <div *ngIf="elemento.sensore != null; then content; else other_content">
           here is ignored
         </div>
-        <ng-template #content
-          ><td>{{ elemento.sensore.temperatura }}</td></ng-template
+        <ng-template #content>
+          <td>{{ elemento.sensore.sensor }}</td>
+          <td>{{ elemento.sensore.tipos_sensore.tipo_sensor }}</td>
+
+          <div
+            *ngIf="
+              elemento.sensore.tipos_sensore.tipo_sensor === 'TEMPERATURA';
+              then content;
+              else other_content
+            "
+          >
+            here is ignored
+          </div>
+          <ng-template #content
+            ><td>{{ elemento.sensore.temperatura }}</td></ng-template
+          >
+          <ng-template #other_content><td>-</td></ng-template>
+        </ng-template>
+
+        <ng-template #other_content
+          ><td>-</td>
+          <td>-</td>
+          <td>-</td></ng-template
         >
-        <ng-template #other_content><td>-</td></ng-template>
-
         <td>{{ elemento.estado }}</td>
-
         <td>
-          <a routerLink="/elementos/{{ elemento.codigo }}"
+          <a (click)="remove(elemento.id)" [routerLink]=""
             ><i class="fa fa-remove"></i
           ></a>
         </td>

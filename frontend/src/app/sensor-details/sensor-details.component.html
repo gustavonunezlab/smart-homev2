@@ -121,21 +121,13 @@
     </div>
     <br />
 
-    <button
-      (click)="goBack()"
-      class="btn"
-      style="border-color: black"
-      style="background-color: grey"
-    >
-      Atrás
-    </button>
+    <button id="boton-back" (click)="goBack()" class="btn">Atrás</button>
     &nbsp;
     <button
+      id="boton-save"
       (click)="save()"
       [disabled]="!form.valid"
       class="btn"
-      style="border-color: black"
-      style="background-color: lightsteelblue"
     >
       Guardar
     </button>
