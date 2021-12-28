@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
         model: TiposSensores,
       },
     ],
-    attributes: ["id", "sensor", "codigo", "estado"],
+    attributes: ["id", "sensor", "codigo", "estado",  "temperatura"],
   }).then((sensores) => {
     res.json(sensores);
   });
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
         model: TiposSensores,
       },
     ],
-    attributes: ["id", "sensor", "codigo", "estado"],
+    attributes: ["id", "sensor", "codigo", "estado", "temperatura"],
   }).then((sensores) => {
     res.json(sensores);
   });
@@ -54,7 +54,7 @@ router.get("/codigo/:codigo", (req, res) => {
         model: TiposSensores,
       },
     ],
-    attributes: ["id", "sensor", "codigo", "estado"],
+    attributes: ["id", "sensor", "codigo", "estado", "temperatura"],
   }).then((sensor) => {
     res.json(sensor);
   });
@@ -75,11 +75,12 @@ router.post("/", (req, res) => {
   Sensores.create({
     codigo: req.body.codigo,
     sensor: req.body.sensor,
-    id_tipo_sensor: req.body.id_tipo_sensor,
-    id_elemento: req.body.id_elemento,
+    id_tipo_sensor: req.body.tipos_sensore.id,
+    id_elemento: req.body.elemento.id,
     id_controlador: 1, //Controlador por defecto
     estado: req.body.estado,
     ip: req.body.ip,
+    temperatura: req.body.temperatura,
   })
     .then((post) => {
       res.json(post);
@@ -94,10 +95,11 @@ router.put("/:id", (req, res) => {
     {
       codigo: req.body.codigo,
       sensor: req.body.sensor,
-      id_tipo_sensor: req.body.id_tipo_sensor,
-      id_elemento: req.body.id_elemento,
+      id_tipo_sensor: req.body.tipos_sensore.id,
+      id_elemento: req.body.elemento.id,
       estado: req.body.estado,
       ip: req.body.ip,
+      temperatura: req.body.temperatura,
     },
     {
       where: {

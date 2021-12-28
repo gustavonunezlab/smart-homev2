@@ -21,6 +21,14 @@ export class SensoresComponent implements OnInit {
       response.forEach((element: Sensor) => {
         this.sensores.push(element);
       });
+      this.sensores.sort((a, b) =>
+        a.sensor.toLocaleLowerCase() > b.sensor.toLocaleLowerCase()
+          ? 1
+          : b.sensor.toLocaleLowerCase() > a.sensor.toLocaleLowerCase()
+          ? -1
+          : 0
+      ); console.log(this.sensores);
+      
     });
   }
 }

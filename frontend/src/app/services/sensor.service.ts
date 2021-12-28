@@ -29,6 +29,8 @@ export class SensorService {
         sensor
       );
     } else {
+      console.log(sensor);
+      
       return this.http.post<DataPackage>(`${this.sensoresUrl}`, sensor);
     }
   }

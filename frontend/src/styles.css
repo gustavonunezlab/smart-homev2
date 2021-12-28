@@ -51,9 +51,19 @@ h2 {
 }
 
 /* Typeahead dropdown */
-button[class~="dropdown-item"] {
-  width: auto;
+
+ngb-typeahead-window[class~="dropdown-menu"] {
+width: 19rem;
 }
+
+button[class~="dropdown-item"] {
+padding: 0;
+text-align: center;
+
+  
+}
+
+
 
 /* Correcion de tamaño inputs */
 .input-group input {

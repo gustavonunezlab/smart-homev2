@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, STRING } = require("sequelize");
 const sequelize = require("../db");
 
 class Sensores extends Model {}
@@ -38,10 +38,14 @@ Sensores.init(
         },
       },
     },
+    temperatura: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     estado: {
       type: DataTypes.STRING(50),
       allowNull: true,
-    },
+    }
   },
   {
     sequelize,
@@ -51,22 +55,3 @@ Sensores.init(
 );
 
 module.exports = Sensores;
-
-/*
-
-Relacion con Elementos one to one a traves de id_elemento
-Relacion con TipoSensor many to one a traves de id_tipo_sensor
-Relacion con Controlador many to one a traves de id_controlador
-
-        Sensores.associate = function (models) {
-            Sensores.belongsTo(models.tiposSensores, {
-              foreignKey: 'id_tipo_sensor'
-        });
-
-        TiposSensores.associate = function (models) {
-            TiposSensores.hasMany(models.sensores, {
-            foreignKey: 'id_tipo_sensor'
-        });
-
-
-    */

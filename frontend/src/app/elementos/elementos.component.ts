@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Elemento } from '../models/elemento';
 import { ElementoService } from '../services/elemento.service';
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalConfirm } from '../modal/modal.component';
 
 @Component({
@@ -29,6 +29,13 @@ export class ElementosComponent implements OnInit {
       response.forEach((element: Elemento) => {
         this.elementos.push(element);
       });
+      this.elementos.sort((a, b) =>
+        a.elemento.toLocaleLowerCase() > b.elemento.toLocaleLowerCase()
+          ? 1
+          : b.elemento.toLocaleLowerCase() > a.elemento.toLocaleLowerCase()
+          ? -1
+          : 0
+      );
     });
   }
 
@@ -37,12 +44,11 @@ export class ElementosComponent implements OnInit {
     const that = this;
     modal.result.then(
       function () {
-        that.elementoService.remove(id).subscribe(_ => {
+        that.elementoService.remove(id).subscribe((_) => {
           that.alert = false;
           that.mensaje = _.StatusText;
-          that.type = _.StatusCode == 200 ? "succes" : "danger";
+          that.type = _.StatusCode == 200 ? 'succes' : 'danger';
           history.go(0);
-          
         });
       },
       function () {}
