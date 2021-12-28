@@ -1,1 +1,54 @@
-<p>tipos-sensores works!</p>
+<div class="row">
+    <div class="col">
+      <h2 class="float-left">Tipos Sensores</h2>
+    </div>
+  
+    <div class="col">
+      <span class="float-right"
+        ><a
+          routerLink="/tipos_sensores/new"
+          type="button"
+          class="btn btn-dark pull-right"
+          id="boton-add"
+          >Agregar Tipo Sensor</a
+        ></span
+      >
+    </div>
+  </div>
+  
+  <div class="table-responsive">
+    <hr />
+  
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Codigo</th>
+          <th>Nombre</th>
+         
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tipoSensor of tiposSensores; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ tipoSensor.id }}</td>
+          <td>{{ tipoSensor.tipo_sensor }}</td>
+  
+         
+          <td>
+            <a (click)="remove(tipoSensor.id)" [routerLink]=""
+              ><i class="fa fa-remove"></i
+            ></a>
+          </td>
+          <td>
+            <a routerLink="/elementos/{{ tipoSensor.id }}"
+              ><i class="fa fa-pencil"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

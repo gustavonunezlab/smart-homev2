@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { SensorService } from '../services/sensor.service';
 import { ElementoService } from '../services/elemento.service';
+import { TipoSensorService } from '../services/tipo-sensor.service';
 import { Sensor } from '../models/sensor';
 import { Elemento } from '../models/elemento';
 import { TipoSensor } from '../models/tipoSensor';
@@ -30,7 +31,8 @@ export class SensorDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private sensorService: SensorService,
     private location: Location,
-    private elementoService: ElementoService
+    private elementoService: ElementoService,
+    private tipoSensorService: TipoSensorService
   ) {}
 
   ngOnInit(): void {
@@ -41,20 +43,10 @@ export class SensorDetailsComponent implements OnInit {
     const codigo = this.route.snapshot.paramMap.get('codigo');
 
     if (codigo === 'new') {
-      this.sensor = {
-        id: null!,
-        sensor: null!,
-        ip: null!,
-        elemento: null! as Elemento,
-        tipos_sensore: null! as TipoSensor,
-        estado: null!,
-        codigo: null!,
-        temperatura: null!,
-      };
+      this.sensor = <Sensor>{};
     } else {
       this.sensorService.get(codigo!).subscribe((response: any) => {
         this.sensor = <Sensor>response;
-        console.log(this.sensor);
       });
     }
   }
@@ -89,13 +81,43 @@ export class SensorDetailsComponent implements OnInit {
       tap(() => (this.searching = false))
     );
 
-  resultFormat(value: any): string {
+  searchTipoSensor: OperatorFunction<string, readonly string[]> = (
+    text$: Observable<string>
+  ) =>
+    text$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(() => (this.searching = true)),
+      switchMap((term) =>
+        this.tipoSensorService.search(term).pipe(
+          tap(() => (this.searchFailed = false)),
+          catchError(() => {
+            this.searchFailed = true;
+            return of([]);
+          })
+        )
+      ),
+      tap(() => (this.searching = false))
+    );
+
+  resultElementoFormat(value: any): string {
     return value.elemento;
   }
 
-  inputFormat(value: any): string {
+  inputElementoFormat(value: any): string {
     if (value) {
       return value.elemento;
+    }
+    return null!;
+  }
+
+  resultTipoSensorFormat(value: any): string {
+    return value.tipo_sensor;
+  }
+
+  inputTipoSensorFormat(value: any): string {
+    if (value) {
+      return value.tipo_sensor;
     }
     return null!;
   }

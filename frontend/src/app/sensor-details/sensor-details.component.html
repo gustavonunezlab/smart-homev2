@@ -46,28 +46,31 @@
           maxlength="20"
           required
           [ngbTypeahead]="searchElemento"
-          [resultFormatter]="resultFormat"
-          [inputFormatter]="inputFormat"
+          [resultFormatter]="resultElementoFormat"
+          [inputFormatter]="inputElementoFormat"
           [editable]="false"
         />
       </div>
     </div>
 
     <div class="form-row" style="display: flex">
-      <!--
       <div class="form-group col">
         <label for="name">Tipo Sensor:</label>
         <div class="input-group">
           <input
-            [(ngModel)]="sensor.tipos_sensore.tipo_sensor"
+            [(ngModel)]="sensor.tipos_sensore"
             name="tipo_sensor"
             placeholder="Tipo Sensor"
             class="form-control"
             required
+            [ngbTypeahead]="searchTipoSensor"
+            [resultFormatter]="resultTipoSensorFormat"
+            [inputFormatter]="inputTipoSensorFormat"
+            [editable]="false"
           />
         </div>
       </div>
-      &nbsp; -->
+      &nbsp;
       <div class="form-group col">
         <label for="name">Estado:</label>
         <div class="input-group">
@@ -84,34 +87,49 @@
       &nbsp;
       <div class="form-group col">
         <label for="name">Temperatura:</label>
-
         <div
-          *ngIf="
-            sensor.tipos_sensore === null ||
-              sensor.tipos_sensore.tipo_sensor === 'TEMPERATURA';
-            then content;
-            else other_content
-          "
-        ></div>
-
+          *ngIf="sensor.tipos_sensore != null; then content; else other_content"
+        >
+          here is ignored
+        </div>
         <ng-template #content>
-          <div class="input-group">
-            <input
-              [(ngModel)]="sensor.temperatura"
-              name="temperatura"
-              placeholder="Temperatura"
-              class="form-control"
-              minlength="3"
-              maxlength="40"
-            />
-          </div>
-        </ng-template>
+          <div
+            *ngIf="
+              sensor.tipos_sensore.tipo_sensor === 'TEMPERATURA';
+              then content;
+              else other_content
+            "
+          ></div>
 
-        <ng-template #other_content>
+          <ng-template #content>
+            <div class="input-group">
+              <input
+                [(ngModel)]="sensor.temperatura"
+                name="temperatura"
+                placeholder="Temperatura"
+                class="form-control"
+                minlength="1"
+                maxlength="2"
+              />
+            </div>
+          </ng-template>
+
+          <ng-template #other_content>
+            <div class="input-group">
+              <input
+                type="text"
+                value="Solo aplicable a Tipo de sensor de Temperatura"
+                class="form-control"
+                readonly
+              />
+            </div>
+          </ng-template>
+        </ng-template>
+        <ng-template #other_content> 
           <div class="input-group">
             <input
               type="text"
-              value="No aplicable a Tipo de sensor de Apertura"
+              value="Solo aplicable a Tipo de sensor de Temperatura"
               class="form-control"
               readonly
             />

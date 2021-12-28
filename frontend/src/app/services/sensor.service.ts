@@ -23,9 +23,13 @@ export class SensorService {
   }
 
   save(sensor: Sensor): Observable<DataPackage> {
-    return this.http[sensor.id ? 'put' : 'post']<DataPackage>(
-      `${this.sensoresUrl}/${sensor.id}`,
-      sensor
-    );
+    if (sensor.id != undefined) {
+      return this.http.put<DataPackage>(
+        `${this.sensoresUrl}/${sensor.id}`,
+        sensor
+      );
+    } else {
+      return this.http.post<DataPackage>(`${this.sensoresUrl}`, sensor);
+    }
   }
 }

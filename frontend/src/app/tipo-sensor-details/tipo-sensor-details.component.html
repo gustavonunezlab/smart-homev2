@@ -1,1 +1,31 @@
-<p>tipo-sensor-details works!</p>
+<div *ngIf="tipoSensor">
+  <h2>Detalles tipo sensor</h2>
+  <form #form="ngForm">
+    <div class="form-group"></div>
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input
+        [(ngModel)]="tipoSensor.tipo_sensor"
+        name="tipo_sensor"
+        placeholder="Nombre"
+        class="form-control"
+        minlength="3"
+        maxlength="40"
+        required
+      />
+    </div>
+
+    <br />
+
+    <button id="boton-back" (click)="goBack()" class="btn">Atrás</button>
+    &nbsp;
+    <button
+      id="boton-save"
+      (click)="save()"
+      [disabled]="!form.valid"
+      class="btn"
+    >
+      Guardar
+    </button>
+  </form>
+</div>
