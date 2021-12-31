@@ -24,10 +24,7 @@ export class ElementoService {
 
   save(elemento: Elemento): Observable<DataPackage> {
     if (elemento.id != undefined) {
-      return this.http.put<DataPackage>(
-        `${this.elementosUrl}/${elemento.id}`,
-        elemento
-      );
+      return this.http.put<DataPackage>(`${this.elementosUrl}`, elemento);
     } else {
       return this.http.post<DataPackage>(`${this.elementosUrl}`, elemento);
     }
@@ -41,6 +38,5 @@ export class ElementoService {
 
   remove(id: number): Observable<DataPackage> {
     return this.http['delete']<DataPackage>(`${this.elementosUrl}/${id}`);
-}
-
+  }
 }

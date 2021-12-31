@@ -38,7 +38,15 @@
         <td>{{ i + 1 }}</td>
         <td>{{ sensor.codigo }}</td>
         <td>{{ sensor.sensor }}</td>
-        <td>{{ sensor.elemento.elemento }}</td>
+
+        <div *ngIf="sensor.elemento == null; then content; else other_content">
+          here is ignored
+        </div>
+        <ng-template #content
+          ><td>-</td></ng-template
+        >
+        <ng-template #other_content><td>{{ sensor.elemento.elemento }}</td></ng-template>
+
         <td>{{ sensor.tipos_sensore.tipo_sensor }}</td>
         <td>{{ sensor.estado }}</td>
 
@@ -69,4 +77,6 @@
       </tr>
     </tbody>
   </table>
+  <br>
+  <p>Para ingresar correctamente un sensor, primero debe ingresar el Tipo de Sensor (si no existe) y el Elemento al cual se va a asociar, desde las pestañas correspondientes.</p>
 </div>

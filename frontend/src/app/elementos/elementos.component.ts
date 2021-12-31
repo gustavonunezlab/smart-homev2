@@ -25,17 +25,8 @@ export class ElementosComponent implements OnInit {
   }
 
   getElementos(): void {
-    this.elementoService.getElementos().subscribe((response: any) => {
-      response.forEach((element: Elemento) => {
-        this.elementos.push(element);
-      });
-      this.elementos.sort((a, b) =>
-        a.elemento.toLocaleLowerCase() > b.elemento.toLocaleLowerCase()
-          ? 1
-          : b.elemento.toLocaleLowerCase() > a.elemento.toLocaleLowerCase()
-          ? -1
-          : 0
-      );
+    this.elementoService.getElementos().subscribe((dataPackage) => {
+      this.elementos = dataPackage.data as Elemento[];
     });
   }
 

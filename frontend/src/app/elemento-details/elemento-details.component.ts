@@ -28,8 +28,8 @@ export class ElementoDetailsComponent implements OnInit {
     if (codigo === 'new') {
       this.elemento = <Elemento>{};
     } else {
-      this.elementoService.get(codigo!).subscribe((response: any) => {
-        this.elemento = <Elemento>response;
+      this.elementoService.get(codigo!).subscribe((dataPackage) => {
+        this.elemento = dataPackage.data as Elemento;
       });
     }
   }

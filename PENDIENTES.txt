@@ -1,0 +1,10 @@
+BACKEND:
+
+Ver relacion entre elementos y sensor, un elemento debe tener asociado solo un sensor.
+Router, Controller y Service de Sensores.
+
+Delete en Tipos Sensores?
+
+FRONTEND
+
+Delete y Put en Sensor component.

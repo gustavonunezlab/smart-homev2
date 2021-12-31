@@ -25,7 +25,7 @@ export class SensorService {
   save(sensor: Sensor): Observable<DataPackage> {
     if (sensor.id != undefined) {
       return this.http.put<DataPackage>(
-        `${this.sensoresUrl}/${sensor.id}`,
+        `${this.sensoresUrl}`,
         sensor
       );
     } else {

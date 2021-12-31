@@ -90,7 +90,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/", (req, res) => {
   Sensores.update(
     {
       codigo: req.body.codigo,

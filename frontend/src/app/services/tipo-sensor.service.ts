@@ -25,7 +25,7 @@ export class TipoSensorService {
   save(tipoSensor: TipoSensor): Observable<DataPackage> {
     if (tipoSensor.id != undefined) {
       return this.http.put<DataPackage>(
-        `${this.tiposSensoresUrl}/${tipoSensor.id}`,
+        `${this.tiposSensoresUrl}`,
         tipoSensor
       );
     } else {
