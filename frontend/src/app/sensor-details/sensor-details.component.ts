@@ -81,21 +81,22 @@ export class SensorDetailsComponent implements OnInit {
       tap(() => (this.searching = false))
     );
 
-  searchTipoSensor: OperatorFunction<string, readonly string[]> = (
-    text$: Observable<string>
-  ) =>
+  searchTipoSensor = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       tap(() => (this.searching = true)),
       switchMap((term) =>
-        this.tipoSensorService.search(term).pipe(
-          tap(() => (this.searchFailed = false)),
-          catchError(() => {
-            this.searchFailed = true;
-            return of([]);
-          })
-        )
+        this.tipoSensorService
+          .search(term)
+          .pipe(map((response) => response.data))
+          .pipe(
+            tap(() => (this.searchFailed = false)),
+            catchError(() => {
+              this.searchFailed = true;
+              return of([]);
+            })
+          )
       ),
       tap(() => (this.searching = false))
     );

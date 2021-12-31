@@ -29,8 +29,8 @@ export class TipoSensorDetailsComponent implements OnInit {
     if (id === 'new') {
       this.tipoSensor = <TipoSensor>{};
     } else {
-      this.tipoSensorService.get(+id!).subscribe((response: any) => {
-        this.tipoSensor = <TipoSensor>response;
+      this.tipoSensorService.get(+id!).subscribe((dataPackage) => {
+        this.tipoSensor = dataPackage.data as TipoSensor;
       });
     }
   }

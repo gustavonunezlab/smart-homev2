@@ -27,7 +27,7 @@ export class SensoresComponent implements OnInit {
           : b.sensor.toLocaleLowerCase() > a.sensor.toLocaleLowerCase()
           ? -1
           : 0
-      ); console.log(this.sensores);
+      );
       
     });
   }
